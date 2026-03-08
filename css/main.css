@@ -59,6 +59,56 @@ body {
     linear-gradient(90deg, rgb(0, 255, 250), rgb(240, 240, 240));
 }
 
+.women-day-title {
+  position: fixed;
+  top: 6vh;
+  left: 50%;
+  z-index: 52;
+  transform: translateX(-50%);
+  width: 100vw;
+  text-align: center;
+  pointer-events: none;
+}
+
+.women-day-title span {
+  display: inline-block;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 5.5vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: #fffaf2;
+  text-shadow:
+    0 0 0.8vmin rgba(255, 255, 255, 0.6),
+    0 0 2.2vmin rgba(255, 187, 130, 0.48),
+    0 0 4vmin rgba(132, 198, 255, 0.36);
+  animation:
+    write-women-day 3.2s ease-out 2.2s forwards,
+    title-breathe 3.8s ease-in-out 5.4s infinite;
+}
+
+@keyframes write-women-day {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes title-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: translateY(-0.25vmin);
+    filter: brightness(1.08);
+  }
+}
+
 .flowers {
   position: relative;
   transform: scale(0.9);
@@ -1973,6 +2023,15 @@ body {
 }
 
 @media (max-width: 720px) {
+  .women-day-title {
+    top: 11vh;
+  }
+
+  .women-day-title span {
+    font-size: clamp(1.8rem, 10vw, 3.1rem);
+    letter-spacing: 0.03em;
+  }
+
   .butterfly {
     width: calc(9vmin * var(--size, 1));
     height: calc(6vmin * var(--size, 1));

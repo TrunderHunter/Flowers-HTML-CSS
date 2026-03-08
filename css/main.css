@@ -28,11 +28,8 @@ body {
   width: 100%;
   height: 100%;
   filter: blur(0.1vmin);
-  background-image: radial-gradient(
-      ellipse at top,
-      transparent 0%,
-      var(--dark-color)
-    ),
+  background-image:
+    radial-gradient(ellipse at top, transparent 0%, var(--dark-color)),
     radial-gradient(
       ellipse at bottom,
       var(--dark-color),
@@ -196,10 +193,29 @@ body {
   height: 11vmin;
   border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
   background-color: #a7ffee;
-  background-image: linear-gradient(to top, #54b8aa, #a7ffee);
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 59, 48, 0.78) 0%,
+      rgba(255, 45, 85, 0.78) 14.28%,
+      rgba(255, 255, 255, 0.72) 28.56%,
+      rgba(255, 214, 10, 0.78) 42.84%,
+      rgba(175, 82, 222, 0.78) 57.12%,
+      rgba(10, 132, 255, 0.78) 71.4%,
+      rgba(255, 149, 0, 0.78) 85.68%,
+      rgba(255, 59, 48, 0.78) 100%
+    ),
+    linear-gradient(to top, #54b8aa, #a7ffee);
+  background-size:
+    420% 420%,
+    auto;
+  background-position: 0% 0%;
   transform-origin: bottom center;
   opacity: 0.9;
-  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 0 2vmin rgba(255, 255, 255, 0.55),
+    0 0 3vmin rgba(255, 255, 255, 0.35);
+  animation: glow-wave 6s linear infinite;
 }
 .flower__leaf--1 {
   transform: translate(-10%, 1%) rotateY(40deg) rotateX(-50deg);
@@ -238,7 +254,8 @@ body {
   width: 60%;
   height: 60%;
   border-radius: inherit;
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       135deg,
       rgba(0, 0, 0, 0.03) 0px,
       rgba(0, 0, 0, 0.03) 1px,
@@ -348,16 +365,40 @@ body {
 .flower__line {
   height: 55vmin;
   width: 1.5vmin;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 59, 48, 0.28) 0%,
+      rgba(255, 45, 85, 0.28) 14.28%,
+      rgba(255, 255, 255, 0.24) 28.56%,
+      rgba(255, 214, 10, 0.28) 42.84%,
+      rgba(175, 82, 222, 0.28) 57.12%,
+      rgba(10, 132, 255, 0.28) 71.4%,
+      rgba(255, 149, 0, 0.28) 85.68%,
+      rgba(255, 59, 48, 0.28) 100%
+    ),
+    linear-gradient(
       to left,
       rgba(0, 0, 0, 0.2),
       transparent,
       rgba(255, 255, 255, 0.2)
     ),
     linear-gradient(to top, transparent 10%, #14757a, #39c6d6);
+  background-size:
+    420% 420%,
+    auto,
+    auto;
+  background-position:
+    0% 0%,
+    0 0,
+    0 0;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
-  -webkit-animation: grow-flower-tree 4s backwards;
-  animation: grow-flower-tree 4s backwards;
+  -webkit-animation:
+    grow-flower-tree 4s backwards,
+    glow-wave-stem 6s linear infinite;
+  animation:
+    grow-flower-tree 4s backwards,
+    glow-wave-stem 6s linear infinite;
 }
 .flower__line__leaf {
   --w: 7vmin;
@@ -369,7 +410,27 @@ body {
   height: var(--h);
   border-top-right-radius: var(--h);
   border-bottom-left-radius: var(--h);
-  background-image: linear-gradient(to top, rgba(20, 117, 122, 0.4), #39c6d6);
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 59, 48, 0.24) 0%,
+      rgba(255, 45, 85, 0.24) 14.28%,
+      rgba(255, 255, 255, 0.2) 28.56%,
+      rgba(255, 214, 10, 0.24) 42.84%,
+      rgba(175, 82, 222, 0.24) 57.12%,
+      rgba(10, 132, 255, 0.24) 71.4%,
+      rgba(255, 149, 0, 0.24) 85.68%,
+      rgba(255, 59, 48, 0.24) 100%
+    ),
+    linear-gradient(to top, rgba(20, 117, 122, 0.4), #39c6d6);
+  background-size:
+    420% 420%,
+    auto;
+  background-position:
+    0% 0%,
+    0 0;
+  animation: glow-wave-leaf 6s linear infinite;
+  box-shadow: 0 0 1.2vmin rgba(255, 255, 255, 0.2);
 }
 .flower__line__leaf--1 {
   transform: rotate(70deg) rotateY(30deg);
@@ -949,11 +1010,8 @@ body {
   height: 10vmin;
   border-radius: 100% 0% 0% 100%/100% 100% 0% 0%;
   box-shadow: inset 0 2px 1vmin hsla(184deg, 97%, 58%, 0.2);
-  background-image: linear-gradient(
-      to bottom left,
-      transparent,
-      var(--dark-color)
-    ),
+  background-image:
+    linear-gradient(to bottom left, transparent, var(--dark-color)),
     linear-gradient(to bottom right, #159faa 50%, transparent 50%, transparent);
   -webkit-mask-image: linear-gradient(
     to bottom right,
@@ -1012,11 +1070,8 @@ body {
   height: 10vmin;
   border-radius: 100% 0% 0% 100%/100% 100% 0% 0%;
   box-shadow: inset 0 2px 1vmin hsla(184deg, 97%, 58%, 0.2);
-  background-image: linear-gradient(
-      to bottom left,
-      transparent,
-      var(--dark-color) 98%
-    ),
+  background-image:
+    linear-gradient(to bottom left, transparent, var(--dark-color) 98%),
     linear-gradient(to bottom right, #23f0ff 45%, transparent 50%, transparent);
   -webkit-mask-image: linear-gradient(
     135deg,
@@ -1396,6 +1451,144 @@ body {
     transform: translateY(-30vmin);
     opacity: 0;
     filter: blur(1vmin);
+  }
+}
+@-webkit-keyframes glow-wave {
+  0% {
+    background-position: 0% 0%;
+    box-shadow:
+      inset 0 0 2vmin rgba(255, 255, 255, 0.5),
+      0 0 2.2vmin rgba(255, 255, 255, 0.25);
+  }
+  50% {
+    background-position: 100% 100%;
+    box-shadow:
+      inset 0 0 2.4vmin rgba(255, 255, 255, 0.7),
+      0 0 3.2vmin rgba(255, 255, 255, 0.45);
+  }
+  100% {
+    background-position: 200% 200%;
+    box-shadow:
+      inset 0 0 2vmin rgba(255, 255, 255, 0.5),
+      0 0 2.2vmin rgba(255, 255, 255, 0.25);
+  }
+}
+@keyframes glow-wave {
+  0% {
+    background-position: 0% 0%;
+    box-shadow:
+      inset 0 0 2vmin rgba(255, 255, 255, 0.5),
+      0 0 2.2vmin rgba(255, 255, 255, 0.25);
+  }
+  50% {
+    background-position: 100% 100%;
+    box-shadow:
+      inset 0 0 2.4vmin rgba(255, 255, 255, 0.7),
+      0 0 3.2vmin rgba(255, 255, 255, 0.45);
+  }
+  100% {
+    background-position: 200% 200%;
+    box-shadow:
+      inset 0 0 2vmin rgba(255, 255, 255, 0.5),
+      0 0 2.2vmin rgba(255, 255, 255, 0.25);
+  }
+}
+@-webkit-keyframes glow-wave-stem {
+  0% {
+    background-position:
+      0% 0%,
+      0 0,
+      0 0;
+    box-shadow:
+      inset 0 0 2px rgba(0, 0, 0, 0.5),
+      0 0 0.6vmin rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    background-position:
+      100% 100%,
+      0 0,
+      0 0;
+    box-shadow:
+      inset 0 0 2px rgba(0, 0, 0, 0.5),
+      0 0 1.2vmin rgba(255, 255, 255, 0.24);
+  }
+  100% {
+    background-position:
+      200% 200%,
+      0 0,
+      0 0;
+    box-shadow:
+      inset 0 0 2px rgba(0, 0, 0, 0.5),
+      0 0 0.6vmin rgba(255, 255, 255, 0.1);
+  }
+}
+@keyframes glow-wave-stem {
+  0% {
+    background-position:
+      0% 0%,
+      0 0,
+      0 0;
+    box-shadow:
+      inset 0 0 2px rgba(0, 0, 0, 0.5),
+      0 0 0.6vmin rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    background-position:
+      100% 100%,
+      0 0,
+      0 0;
+    box-shadow:
+      inset 0 0 2px rgba(0, 0, 0, 0.5),
+      0 0 1.2vmin rgba(255, 255, 255, 0.24);
+  }
+  100% {
+    background-position:
+      200% 200%,
+      0 0,
+      0 0;
+    box-shadow:
+      inset 0 0 2px rgba(0, 0, 0, 0.5),
+      0 0 0.6vmin rgba(255, 255, 255, 0.1);
+  }
+}
+@-webkit-keyframes glow-wave-leaf {
+  0% {
+    background-position:
+      0% 0%,
+      0 0;
+    box-shadow: 0 0 0.8vmin rgba(255, 255, 255, 0.16);
+  }
+  50% {
+    background-position:
+      100% 100%,
+      0 0;
+    box-shadow: 0 0 1.4vmin rgba(255, 255, 255, 0.26);
+  }
+  100% {
+    background-position:
+      200% 200%,
+      0 0;
+    box-shadow: 0 0 0.8vmin rgba(255, 255, 255, 0.16);
+  }
+}
+@keyframes glow-wave-leaf {
+  0% {
+    background-position:
+      0% 0%,
+      0 0;
+    box-shadow: 0 0 0.8vmin rgba(255, 255, 255, 0.16);
+  }
+  50% {
+    background-position:
+      100% 100%,
+      0 0;
+    box-shadow: 0 0 1.4vmin rgba(255, 255, 255, 0.26);
+  }
+  100% {
+    background-position:
+      200% 200%,
+      0 0;
+    box-shadow: 0 0 0.8vmin rgba(255, 255, 255, 0.16);
   }
 }
 @-webkit-keyframes moving-flower-1 {

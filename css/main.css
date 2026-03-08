@@ -59,6 +59,244 @@ body {
     linear-gradient(90deg, rgb(0, 255, 250), rgb(240, 240, 240));
 }
 
+.letter-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 248, 230, 0.26),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 20% 88%,
+      rgba(132, 198, 255, 0.22),
+      transparent 36%
+    ),
+    rgba(0, 0, 0, 0.52);
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.letter-intro.is-open {
+  pointer-events: auto;
+}
+
+.letter-intro__hint {
+  position: fixed;
+  left: 50%;
+  bottom: 8vh;
+  transform: translateX(-50%);
+  z-index: 124;
+  margin: 0;
+  opacity: 0;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  color: #fff6ea;
+  text-shadow: 0 0 1vmin rgba(0, 0, 0, 0.45);
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+}
+
+.letter-intro.is-ready .letter-intro__hint {
+  opacity: 1;
+  animation: hint-pulse 1.35s ease-in-out infinite;
+}
+
+.letter-intro.is-exiting {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.envelope {
+  --env-w: min(78vw, 35rem);
+  position: relative;
+  width: var(--env-w);
+  aspect-ratio: 16 / 10;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  filter: drop-shadow(0 2vmin 3.2vmin rgba(0, 0, 0, 0.5));
+  animation: envelope-float 2.6s ease-in-out infinite;
+}
+
+.envelope__back,
+.envelope__flap {
+  position: absolute;
+  inset: 0;
+  border-radius: 1vmin;
+}
+
+.envelope__back {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 214, 179, 0.96),
+    rgba(244, 167, 129, 0.96)
+  );
+  border: 0.2vmin solid rgba(255, 255, 255, 0.45);
+}
+
+.envelope__back::before,
+.envelope__back::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 72%;
+  background: rgba(229, 140, 114, 0.45);
+}
+
+.envelope__back::before {
+  left: 0;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+.envelope__back::after {
+  right: 0;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+.envelope__flap {
+  transform-origin: top center;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 230, 201, 0.98),
+    rgba(252, 180, 147, 0.98)
+  );
+  clip-path: polygon(0 0, 100% 0, 50% 58%);
+  border: 0.2vmin solid rgba(255, 255, 255, 0.5);
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.envelope__seal {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: clamp(5.8rem, 16vw, 9.2rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url("../img/dauAn.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 0.6vmin 0.9vmin rgba(0, 0, 0, 0.35));
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: 120%;
+  transition: opacity 0.35s ease;
+}
+
+.letter-card {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(78vw, 34rem);
+  min-height: min(48vh, 18rem);
+  transform: translate(-50%, -30%) scale(0.74);
+  padding: clamp(1.1rem, 2.8vw, 1.9rem);
+  border-radius: 0.7rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 253, 247, 0.98),
+    rgba(255, 242, 225, 0.98)
+  );
+  box-shadow:
+    0 1.7vmin 3vmin rgba(0, 0, 0, 0.32),
+    inset 0 0 0 0.15rem rgba(227, 184, 132, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.letter-card__text {
+  margin: 0;
+  width: 100%;
+  max-width: 28ch;
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.95rem, 4.6vw, 3.3rem);
+  line-height: 1.32;
+  color: #584331;
+  text-shadow: 0 0 0.4vmin rgba(255, 255, 255, 0.6);
+}
+
+.letter-card__line {
+  display: block;
+  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+
+.letter-intro.is-open .envelope {
+  animation: none;
+  pointer-events: none;
+}
+
+.letter-intro.is-open .envelope__flap {
+  transform: rotateX(180deg);
+}
+
+.letter-intro.is-open .envelope__seal {
+  opacity: 0;
+}
+
+.letter-intro.is-open .letter-card {
+  opacity: 1;
+  transform: translate(-50%, -52%) scale(1);
+}
+
+.letter-intro.is-open .letter-card__line {
+  animation: letter-line-write 1.25s steps(22, end) forwards;
+}
+
+.letter-intro.is-open .letter-card__line:nth-child(2) {
+  animation-delay: 1.35s;
+}
+
+@keyframes envelope-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.7vmin);
+  }
+}
+
+@keyframes letter-line-write {
+  from {
+    opacity: 1;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes hint-pulse {
+  0%,
+  100% {
+    transform: translateX(-50%);
+    opacity: 0.82;
+  }
+  50% {
+    transform: translateX(-50%) translateY(-0.35vmin);
+    opacity: 1;
+  }
+}
+
 .women-day-title {
   position: fixed;
   top: 6vh;
@@ -2023,6 +2261,31 @@ body {
 }
 
 @media (max-width: 720px) {
+  .envelope {
+    --env-w: min(88vw, 27rem);
+  }
+
+  .letter-card {
+    width: min(88vw, 28rem);
+    min-height: min(46vh, 15rem);
+    transform: translate(-50%, -24%) scale(0.76);
+  }
+
+  .letter-intro.is-open .letter-card {
+    transform: translate(-50%, -45%) scale(1);
+  }
+
+  .letter-card__text {
+    max-width: 100%;
+    font-size: clamp(1.72rem, 7.8vw, 2.55rem);
+    line-height: 1.35;
+  }
+
+  .letter-intro__hint {
+    bottom: 10vh;
+    font-size: clamp(1.25rem, 5.6vw, 1.65rem);
+  }
+
   .women-day-title {
     top: 11vh;
   }
@@ -2045,4 +2308,12 @@ body {
 .container * {
   -webkit-animation-play-state: paused !important;
   animation-play-state: paused !important;
+}
+
+.container .letter-intro,
+.container .letter-intro *,
+.container .letter-intro *::before,
+.container .letter-intro *::after {
+  -webkit-animation-play-state: running !important;
+  animation-play-state: running !important;
 } /*# sourceMappingURL=main.css.map */
